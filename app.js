@@ -11,7 +11,17 @@ require('./models/usage');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/analytics');
+
+var options = {
+  db: { native_parser: true },
+  server: { poolSize: 5 },
+  replset: { rs_name: 'myReplicaSetName' },
+  user: 'dbUser',
+  pass: '6pnpD7PG'
+};
+
+mongoose.connect('mongodb://localhost/analytics', options);
+//mongoose.connect('mongodb://localhost/analytics');
 
 var app = express();
 
