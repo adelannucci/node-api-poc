@@ -1,0 +1,48 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Alteração</h1>
+<div class="col-md-6">
+  <form action="/edit/{{data.id}}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+      <label>Id</label>
+      <p class="form-control" id="nome">{{data.id}}</p>
+    </div>
+    <div class="form-group">
+      <label for="time">Time</label>
+      <p type="Date" class="form-control" name="time" id="time">{{data.time}}</p>
+    </div>
+    <div class="form-group">
+      <label for="lat">Latitude</label>
+      <p type="number" class="form-control" name="lat" id="lat">{{data.lat}}</p>
+    </div>
+    <div class="form-group">
+      <label for="lng">Longitude</label>
+      <p type="number" class="form-control" name="lng" id="lng">{{data.lng}}</p>
+    </div>
+    <div class="form-group">
+      <label for="so">Sistema Operacional</label>
+      <p type="text" class="form-control" name="so" id="so">{{data.so}}</p>
+    </div>
+    <div class="form-group">
+      <label for="version">Versão</label>
+      <p type="text" class="form-control" name="version" id="version">{{data.version}}</p>
+    </div>
+    <div class="form-group">
+      <label for="macaddress">MAC Address</label>
+      <p type="text" class="form-control" name="macaddress" id="macaddress">{{data.macaddress}}</p>
+    </div>
+    <div class="form-group">
+      <label for="connections">Conexões Ativas</label>
+      <p class="form-control" name="connections" id="connections">{{data.connections}}</p>
+    </div>
+
+    <a href="#" class="btn btn-default">Voltar</a>
+  </form>
+</div>
+
+
+
+{% endblock %}

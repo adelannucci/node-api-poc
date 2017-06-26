@@ -1,0 +1,45 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Cadastro</h1>
+<div class="col-md-6">
+  <form action="/" method="post">
+    <div class="form-group">
+      <label for="time">Time</label>
+      <input type="date" class="form-control" name="time" id="time" placeholder="Time">
+    </div>
+    <div class="form-group">
+      <label for="lat">Latitude</label>
+      <input type="number" class="form-control" name="lat" id="lat" placeholder="Latitude">
+    </div>
+    <div class="form-group">
+      <label for="lng">Longitude</label>
+      <input type="number" class="form-control" name="lng" id="lng" placeholder="Longitude">
+    </div>
+    <div class="form-group">
+      <label for="so">Sistema Operacional</label>
+      <input type="text" class="form-control" name="so" id="so" placeholder="Sistema Operacional">
+    </div>
+
+    <div class="form-group">
+      <label for="version">Versão</label>
+      <input type="text" class="form-control" name="version" id="version" placeholder="Versão">
+    </div>
+    <div class="form-group">
+      <label for="macaddress">MAC Address</label>
+      <input type="text" class="form-control" name="macaddress" id="macaddress" placeholder="MAC Address">
+    </div>
+    <div class="form-group">
+      <label for="connections">Conexões Ativas</label>
+      <input type="text" class="form-control" name="connections" id="connections" placeholder="Conexões Ativas">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <a href="#" class="btn btn-default">Voltar</a>
+  </form>
+</div>
+
+
+
+{% endblock %}

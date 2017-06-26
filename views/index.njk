@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>Lista</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Data</th>
+        <th>Sistema Operacional</th>
+        <th>Versão</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for info in data %}
+        <tr>
+          <td>{{info.id}}</td>
+          <td>{{info.time}}</td>
+          <td>{{info.so}}</td>
+          <td>{{info.version}}</td>
+          <td>
+            <a href="/edit/{{info.id}}" class="btn btn-primary">Mostrar</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault();
+                document.getElementById('logout-form-{{info.id}}').submit();">Excluir</button>
+          </td>
+          <form id="logout-form-{{info.id}}" action="/delete/{{info.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}
