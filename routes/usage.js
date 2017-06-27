@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var json2csv = require('json2csv');
 var mongoose = require('mongoose');
 
 router.get('/', (req, res, next) => {
@@ -15,6 +16,17 @@ router.get('/all', (req, res, next) => {
     res.json({
       data: info
     });
+  },next);
+});
+
+router.get('/csv', (req, res, next) => {
+  mongoose.model('Usage').find().then((info) => {
+    var fields = ['_id','time','lat','lng','so','version','macaddress','connections','__v'];
+    var result = json2csv({ data: info, fields: fields });
+    console.log(result);
+    res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    res.set('Content-Type', 'text/csv');
+    res.status(200).send(result);
   },next);
 });
 
