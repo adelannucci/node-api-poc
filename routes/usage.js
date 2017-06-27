@@ -21,7 +21,7 @@ router.get('/all', (req, res, next) => {
 
 router.get('/csv', (req, res, next) => {
   mongoose.model('Usage').find().then((info) => {
-    var fields = ['_id','time','lat','lng','so','version','macaddress','connections','__v'];
+    var fields = ['_id', 'time', 'lat', 'lng', 'so', 'version', 'model', 'macaddress', 'connections', '__v'];
     var result = json2csv({ data: info, fields: fields });
     console.log(result);
     res.setHeader('Content-disposition', 'attachment; filename=data.csv');
@@ -48,7 +48,6 @@ router.post('/add',(req,res,next)=>{
 router.post('/',(req,res,next)=>{
   var Usage = mongoose.model('Usage');
   var m = new Usage(req.body);
-  console.log(m);
 
   m.save().then((result) => {
     res.redirect('/');
