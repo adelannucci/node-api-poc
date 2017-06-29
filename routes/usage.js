@@ -38,6 +38,8 @@ router.get('/add',(req,res,next)=>{
 router.post('/add',(req,res,next)=>{
   var Usage = mongoose.model('Usage');
   var m = new Usage(req.body);
+  var date = new Date();
+  m.logTime = date.getTime();
 
   m.save().then((result) => {
     res.json(result);
@@ -49,7 +51,10 @@ router.post('/',(req,res,next)=>{
   var Usage = mongoose.model('Usage');
   var m = new Usage(req.body);
   var date = new Date();
+  m.time = date.getTime();
   m.logTime = date.getTime();
+
+  console.log(m);
 
   m.save().then((result) => {
     res.redirect('/');
