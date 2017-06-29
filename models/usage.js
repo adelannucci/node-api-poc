@@ -33,6 +33,10 @@ var UsageSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  logTime:   {
+    type: Date,
+    required: true
+  },
 });
 
 module.exports = mongoose.model('Usage', UsageSchema);

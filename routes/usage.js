@@ -48,6 +48,8 @@ router.post('/add',(req,res,next)=>{
 router.post('/',(req,res,next)=>{
   var Usage = mongoose.model('Usage');
   var m = new Usage(req.body);
+  var date = new Date();
+  m.logTime = date.getTime();
 
   m.save().then((result) => {
     res.redirect('/');
@@ -55,11 +57,11 @@ router.post('/',(req,res,next)=>{
 
 });
 
-router.get('/edit/:id',(req,res,next)=>{
+router.get('/show/:id',(req,res,next)=>{
   const {id} = req.params;
 
   mongoose.model('Usage').findOne({_id: id}).then((info) => {
-    res.render('edit.njk', {data: info});
+    res.render('show.njk', {data: info});
   },next);
 });
 

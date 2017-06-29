@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Visualizar</h1>
+<div class="col-md-6">
+  <form>
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+      <label>Id</label>
+      <p class="form-control" id="nome">{{data.id}}</p>
+    </div>
+    <div class="form-group">
+      <label for="time">Data e Hora</label>
+      <p type="Date" class="form-control" name="time" id="time">{{data.time}}</p>
+    </div>
+    <div class="form-group">
+      <label for="lat">Latitude</label>
+      <p type="number" class="form-control" name="lat" id="lat">{{data.lat}}</p>
+    </div>
+    <div class="form-group">
+      <label for="lng">Longitude</label>
+      <p type="number" class="form-control" name="lng" id="lng">{{data.lng}}</p>
+    </div>
+    <div class="form-group">
+      <label for="so">Sistema Operacional</label>
+      <p type="text" class="form-control" name="so" id="so">{{data.so}}</p>
+    </div>
+    <div class="form-group">
+      <label for="version">Versão</label>
+      <p type="text" class="form-control" name="version" id="version">{{data.version}}</p>
+    </div>
+    <div class="form-group">
+      <label for="model">Modelo</label>
+      <p type="text" class="form-control" name="model" id="model">{{data.model}}</p>
+    </div>
+    <div class="form-group">
+      <label for="macaddress">MAC Address</label>
+      <p type="text" class="form-control" name="macaddress" id="macaddress">{{data.macaddress}}</p>
+    </div>
+    <div class="form-group">
+      <label for="connections">Conexões Ativas</label>
+      <p class="form-control" name="connections" id="connections">{{data.connections}}</p>
+    </div>
+    <div class="form-group">
+      <label for="time">Hora do registro</label>
+      <p type="Date" class="form-control" name="time" id="time">{{data.logTime}}</p>
+    </div>
+  </form>
+</div>
+
+
+
+{% endblock %}

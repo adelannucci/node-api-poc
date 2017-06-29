@@ -16,7 +16,7 @@ var options = {
   db: { native_parser: true },
   server: { poolSize: 5 },
   replset: { rs_name: 'myReplicaSetName' },
-  user: 'dbUser',
+  user: 'analytics',
   pass: '6pnpD7PG'
 };
 
