@@ -5,9 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressNunjucks = require('express-nunjucks');
-var index = require('./routes/usage');
+var index = require('./routes/routes');
 var methodOverride = require('method-override');
-require('./models/usage');
+require('./models/device-info');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -21,7 +21,6 @@ var options = {
 };
 
 mongoose.connect('mongodb://localhost/analytics', options);
-//mongoose.connect('mongodb://localhost/analytics');
 
 var app = express();
 

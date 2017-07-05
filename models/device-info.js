@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var UsageSchema = new mongoose.Schema({
+var DeviceInfoSchema = new mongoose.Schema({
   time:  {
     type: Date,
     required: true
@@ -39,4 +39,4 @@ var UsageSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Usage', UsageSchema);
+module.exports = mongoose.model('DeviceInfo', DeviceInfoSchema);
