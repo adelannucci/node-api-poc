@@ -12,6 +12,14 @@ router.get('/device', (req, res, next) => {
   },next);
 });
 
+router.get('/models', (req, res, next) => {
+  mongoose.model('DeviceModel').find().then((info) => {
+    res.json({
+      data: info
+    });
+  },next);
+});
+
 router.post('/device',(req,res,next)=>{
   var DeviceInfo = mongoose.model('DeviceInfo');
   var m = new DeviceInfo(req.body);
@@ -26,9 +34,8 @@ router.post('/device',(req,res,next)=>{
 
 router.get('/device/csv', (req, res, next) => {
   mongoose.model('DeviceInfo').find().then((info) => {
-    var fields = ['_id', 'time', 'lat', 'lng', 'so', 'version', 'model', 'macaddress', 'connections', '__v'];
+    var fields = ['time', 'lat', 'lng', 'so', 'version', 'model', 'macaddress', 'connections'];
     var result = json2csv({ data: info, fields: fields });
-    console.log(result);
     res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     res.set('Content-Type', 'text/csv');
     res.status(200).send(result);
@@ -38,15 +45,14 @@ router.get('/device/csv', (req, res, next) => {
 //web
 router.get('/', (req, res, next) => {
   mongoose.model('DeviceInfo').find().then((info) => {
-    res.render('index',{
+    res.render('device/list.njk',{
       data: info
     });
   },next);
 });
 
 router.get('/device/add',(req,res,next)=>{
-  res.render('add');
-
+  res.render('device/add.njk');
 });
 
 router.post('/device/add',(req,res,next)=>{
@@ -62,19 +68,62 @@ router.post('/device/add',(req,res,next)=>{
 
 });
 
-router.get('/show/:id',(req,res,next)=>{
+router.get('/device/show/:id',(req,res,next)=>{
   const {id} = req.params;
 
   mongoose.model('DeviceInfo').findOne({_id: id}).then((info) => {
-    res.render('show.njk', {data: info});
+    res.render('device/show.njk', {data: info});
   },next);
 });
 
-router.delete('/delete/:id', (req,res,next)=>{
+router.delete('/device/delete/:id', (req,res,next)=>{
   const {id} = req.params;
 
   mongoose.model('DeviceInfo').remove({_id: id}).then((info) => {
     res.redirect('/')
+  },next);
+
+});
+
+//model
+router.get('/model', (req, res, next) => {
+  mongoose.model('DeviceModel').find().then((info) => {
+    res.render('model/list.njk',{
+      data: info
+    });
+  },next);
+});
+
+router.get('/model/show/:id',(req,res,next)=>{
+  const {id} = req.params;
+
+  mongoose.model('DeviceModel').findOne({_id: id}).then((info) => {
+    res.render('model/show.njk', {data: info});
+  },next);
+});
+
+router.get('/model/add',(req,res,next)=>{
+  res.render('model/add.njk');
+});
+
+router.post('/model/add',(req,res,next)=>{
+  var DeviceInfo = mongoose.model('DeviceModel');
+  var m = new DeviceInfo(req.body);
+  var date = new Date();
+  m.time = date.getTime();
+  m.logTime = date.getTime();
+
+  m.save().then((result) => {
+    res.redirect('/model');
+  },next);
+
+});
+
+router.delete('/model/delete/:id', (req,res,next)=>{
+  const {id} = req.params;
+
+  mongoose.model('DeviceModel').remove({_id: id}).then((info) => {
+    res.redirect('/model')
   },next);
 
 });

@@ -1,0 +1,32 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Add Model</h1>
+<div class="col-md-6">
+  <form action="/model/add" method="post">
+    <div class="form-group">
+      <label for="retailBranding">Retail Branding</label>
+      <input type="text" class="form-control" name="retailBranding" id="retailBranding" placeholder="Retail Branding">
+    </div>
+    <div class="form-group">
+      <label for="marketingName">Marketing Name</label>
+      <input type="text" class="form-control" name="marketingName" id="marketingName" placeholder="Marketing Name">
+    </div>
+    <div class="form-group">
+      <label for="device">Device</label>
+      <input type="text" class="form-control" name="device" id="marketingName" placeholder="device">
+    </div>
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input type="text" class="form-control" name="model" id="model" placeholder="Model">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/model" class="btn btn-warning">Back</a>
+  </form>
+</div>
+
+
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block pagina %}
 
-<h1>Visualizar</h1>
+<h1>Show Device</h1>
 <div class="col-md-6">
   <form>
     <input type="hidden" name="_method" value="PUT">
@@ -46,6 +46,7 @@
       <label for="time">Hora do registro</label>
       <p type="Date" class="form-control" name="time" id="time">{{data.logTime}}</p>
     </div>
+    <a href="/" class="btn btn-warning">Back</a>
   </form>
 </div>
 

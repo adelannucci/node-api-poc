@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var expressNunjucks = require('express-nunjucks');
 var index = require('./routes/routes');
 var methodOverride = require('method-override');
+require('./models/device_model');
 require('./models/device-info');
 
 var mongoose = require('mongoose');

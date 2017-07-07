@@ -1,0 +1,33 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+<h1>Show Model</h1>
+<div class="col-md-6">
+  <form>
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-group">
+      <label>Id</label>
+      <p class="form-control" id="nome">{{data.id}}</p>
+    </div>
+    <div class="form-group">
+      <label for="time">Retail Branding</label>
+      <p type="text" class="form-control" name="time" id="time">{{data.retailBranding}}</p>
+    </div>
+    <div class="form-group">
+      <label for="marketingName">Marketing Name</label>
+      <p type="text" class="form-control" name="marketingName" id="marketingName">{{data.marketingName}}</p>
+    </div>
+    <div class="form-group">
+      <label for="device">Device</label>
+      <p type="text" class="form-control" name="device" id="device">{{data.device}}</p>
+    </div>
+    <div class="form-group">
+      <label for="model">Model</label>
+      <p type="text" class="form-control" name="model" id="model">{{data.model}}</p>
+    </div>
+    <a href="/model" class="btn btn-warning">Back</a>
+  </form>
+</div>
+
+{% endblock %}

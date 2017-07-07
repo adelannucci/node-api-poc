@@ -1,0 +1,42 @@
+{% extends "layout.njk" %}
+
+{% block pagina %}
+
+  <h1>List Models</h1>
+  <br/>
+  <a href="/model/add" class="btn btn-success">Add new model</a>
+  <br/>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Retail Branding</th>
+        <th>Marketing Name</th>
+        <th>Device</th>
+        <th>Model</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for info in data %}
+        <tr>
+          <td>{{info.id}}</td>
+          <td>{{info.retailBranding}}</td>
+          <td>{{info.marketingName}}</td>
+          <td>{{info.device}}</td>
+          <td>{{info.model}}</td>
+          <td>
+            <a href="/model/show/{{info.id}}" class="btn btn-primary">Show</a>
+            <button class="btn btn-danger"
+              onclick="event.preventDefault();
+                document.getElementById('logout-form-{{info.id}}').submit();">Delete</button>
+          </td>
+          <form id="logout-form-{{info.id}}" action="/model/delete/{{info.id}}" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="DELETE" />
+          </form>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+{% endblock %}
