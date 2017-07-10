@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
 var DeviceModelSchema = new mongoose.Schema({
   retailBranding:  {
@@ -18,5 +19,7 @@ var DeviceModelSchema = new mongoose.Schema({
     required: true
   }
 });
+
+DeviceModelSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('DeviceModel', DeviceModelSchema);

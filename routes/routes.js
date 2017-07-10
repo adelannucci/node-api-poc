@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var json2csv = require('json2csv');
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
 //api
 router.get('/device', (req, res, next) => {
@@ -92,6 +93,23 @@ router.get('/model', (req, res, next) => {
       data: info
     });
   },next);
+});
+
+router.get('/model/pag/:page', (req, res, next) => {
+
+  const {page} = req.params;
+  var perPage = 2;
+
+  mongoose.model('DeviceModel')
+  .paginate({}, { page: page, limit: perPage })
+  .then((info) => {
+    res.render('model/list.njk',{
+      data: info.docs,
+      page: page,
+      total: info.total
+    });
+  },next);
+  
 });
 
 router.get('/model/show/:id',(req,res,next)=>{
