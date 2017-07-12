@@ -13,7 +13,7 @@ router.get('/device', (req, res, next) => {
   },next);
 });
 
-router.get('/models', (req, res, next) => {
+router.get('/model', (req, res, next) => {
   mongoose.model('DeviceModel').find().then((info) => {
     res.json({
       data: info
@@ -87,26 +87,19 @@ router.delete('/device/delete/:id', (req,res,next)=>{
 });
 
 //model
-router.get('/model', (req, res, next) => {
-  mongoose.model('DeviceModel').find().then((info) => {
-    res.render('model/list.njk',{
-      data: info
-    });
-  },next);
-});
-
-router.get('/model/pag/:page', (req, res, next) => {
+router.get('/model/:page', (req, res, next) => {
 
   const {page} = req.params;
-  var perPage = 2;
+  var perPage = 50;
 
   mongoose.model('DeviceModel')
   .paginate({}, { page: page, limit: perPage })
   .then((info) => {
     res.render('model/list.njk',{
       data: info.docs,
-      page: page,
-      total: info.total
+      current: page,
+      total: info.total,
+      pages: info.total/perPage
     });
   },next);
   
