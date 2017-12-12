@@ -1,5 +1,12 @@
 ### Node JS WEB SERVICE for the POC Analytics
 
+This WEB SERVICE provides functionalities for the proof of concept on analytics. 
+The service is available in the url: 
+
+http://mongoa0.southcentralus.cloudapp.azure.com:8080/
+
+to run locally follow the instructions
+
 ##### Environment Setup
 
 > **Software**
@@ -25,10 +32,10 @@
 
 ##### API 
 
-https://localhost:8080/api/
+http://localhost:8080/api/
 
 ##### API usage
-URL: https://localhost:8080/api/usage
+URL: http://localhost:8080/api/usage
 ##### GET 
 ##### BODY 
 
@@ -83,7 +90,7 @@ URL: https://localhost:8080/api/usage
  ```
  
 ##### API device
-URL: https://localhost:8080/api/device
+URL: http://localhost:8080/api/device
 ##### GET 
 ##### BODY 
 
